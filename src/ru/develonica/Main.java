@@ -18,21 +18,21 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n--------------------------------------------------------");
-        System.out.println("Добро пожаловать в приложение \"Список контактов\"!");
-        System.out.println("1. Добавить контакт");
-        System.out.println("2. Просмотреть список контактов");
-        System.out.println("3. Найти контакт по имени");
-        System.out.println("4. Удалить контакт");
-        System.out.println("5. Выход");
+        System.out.println("Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ РїСЂРёР»РѕР¶РµРЅРёРµ \"РЎРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ\"!");
+        System.out.println("1. Р”РѕР±Р°РІРёС‚СЊ РєРѕРЅС‚Р°РєС‚");
+        System.out.println("2. РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ");
+        System.out.println("3. РќР°Р№С‚Рё РєРѕРЅС‚Р°РєС‚ РїРѕ РёРјРµРЅРё");
+        System.out.println("4. РЈРґР°Р»РёС‚СЊ РєРѕРЅС‚Р°РєС‚");
+        System.out.println("5. Р’С‹С…РѕРґ");
         System.out.println("--------------------------------------------------------");
 
-        System.out.print("Выберите действие (введите номер): ");
+        System.out.print("Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ (РІРІРµРґРёС‚Рµ РЅРѕРјРµСЂ): ");
         int choice = -1;
         try {
             choice = scanner.nextInt();
             scanner.nextLine();
         } catch (Exception e) {
-            System.out.println("Недопустимый ввод");
+            System.out.println("РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ РІРІРѕРґ");
         }
 
         switch (choice) {
@@ -46,42 +46,42 @@ public class Main {
                 contactManager.displayContacts();
                 break;
             case 3:
-                System.out.print("Введите имя для поиска: ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РёРјСЏ РґР»СЏ РїРѕРёСЃРєР°: ");
                 String searchName = scanner.nextLine();
                 contactManager.searchContact(searchName);
                 break;
             case 4:
-                System.out.print("Введите номер контакта для удаления: ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Р° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: ");
                 int deleteIndex = scanner.nextInt();
                 contactManager.deleteContact(deleteIndex);
                 break;
             case 5:
-                System.out.println("До свидания!");
+                System.out.println("Р”Рѕ СЃРІРёРґР°РЅРёСЏ!");
                 System.exit(0);
             default:
-                System.out.println("Недопустимая операция. Пожалуйста, выберите снова.");
+                System.out.println("РќРµРґРѕРїСѓСЃС‚РёРјР°СЏ РѕРїРµСЂР°С†РёСЏ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ СЃРЅРѕРІР°.");
         }
     }
 
     public static Contact addContactFromInput(Scanner scanner) {
-        System.out.print("Введите имя контакта: ");
+        System.out.print("Р’РІРµРґРёС‚Рµ РёРјСЏ РєРѕРЅС‚Р°РєС‚Р°: ");
         String firstName = scanner.nextLine();
-        System.out.print("Введите фамилию контакта: ");
+        System.out.print("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ РєРѕРЅС‚Р°РєС‚Р°: ");
         String lastName = scanner.nextLine();
-        System.out.print("Введите номер телефона (только цифры): ");
+        System.out.print("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° (С‚РѕР»СЊРєРѕ С†РёС„СЂС‹): ");
         String phoneNumber = scanner.nextLine();
 
         if (validatePhoneNumber(phoneNumber)) {
-            System.out.print("Введите адрес электронной почты: ");
+            System.out.print("Р’РІРµРґРёС‚Рµ Р°РґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹: ");
             String email = scanner.nextLine();
 
             if (validateEmail(email)) {
                 return new Contact(firstName, lastName, phoneNumber, email);
             } else {
-                System.out.println("Некорректный email. Пожалуйста, используйте формат example@example.com");
+                System.out.println("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ email. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С„РѕСЂРјР°С‚ example@example.com");
             }
         } else {
-            System.out.println("Некорректный номер телефона. Пожалуйста, вводите только цифры.");
+            System.out.println("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРѕРґРёС‚Рµ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹.");
         }
         return null;
     }
