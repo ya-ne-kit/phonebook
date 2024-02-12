@@ -14,16 +14,16 @@ public class InMemoryContactManager extends ContactManager {
     public void addContact(Contact contact) {
         lastEvent = 1;
         contacts.add(contact);
-        System.out.println("Контакт успешно добавлен.");
+        System.out.println("РљРѕРЅС‚Р°РєС‚ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ.");
     }
 
     @Override
     public void displayContacts() {
         lastEvent = 2;
         if (contacts.isEmpty()) {
-            System.out.println("Список контактов пуст.");
+            System.out.println("РЎРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ РїСѓСЃС‚.");
         } else {
-            System.out.println("Список контактов:");
+            System.out.println("РЎРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ:");
             int index = 1;
             for (Contact contact : contacts) {
                 System.out.println(index + ". " + contact.toString());
@@ -40,7 +40,7 @@ public class InMemoryContactManager extends ContactManager {
         for (Contact contact : contacts) {
             if (contact.getFirstName().toLowerCase().contains(name.toLowerCase())
                     || contact.getLastName().toLowerCase().contains(name.toLowerCase())) {
-                if (index == 1) System.out.println("Результаты поиска:");
+                if (index == 1) System.out.println("Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°:");
                 lastSearch.put(index, contact);
                 System.out.println(index + ". " + contact);
                 index++;
@@ -51,10 +51,10 @@ public class InMemoryContactManager extends ContactManager {
     @Override
     public void deleteContact(int index) {
         if (lastEvent != 3) {
-            System.out.println("Для удаления контакта необходимо найти его с помощью поиска (пункт 3) и запомнить его порядковый номер");
+            System.out.println("Р”Р»СЏ СѓРґР°Р»РµРЅРёСЏ РєРѕРЅС‚Р°РєС‚Р° РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°Р№С‚Рё РµРіРѕ СЃ РїРѕРјРѕС‰СЊСЋ РїРѕРёСЃРєР° (РїСѓРЅРєС‚ 3) Рё Р·Р°РїРѕРјРЅРёС‚СЊ РµРіРѕ РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ");
         } else {
             contacts.remove(lastSearch.get(index));
-            System.out.println("Контакт удален");
+            System.out.println("РљРѕРЅС‚Р°РєС‚ СѓРґР°Р»РµРЅ");
         }
         lastEvent = 4;
     }
